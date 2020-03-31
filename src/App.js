@@ -14,18 +14,32 @@ import React, { Component } from 'react';
 // }
 
 // functional component
-const App = () => { 
+const App = () => {
+  const profiles = [
+    { name: "Taro", age: 10 },
+    { name: "Hanako", age: 5 },
+    { name: "Noname"}
+  ]
   return(
-  <div>
-    <Cat />
-    <Cat />
-    <Cat />
-  </div>
+    <div>
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
+      {/* <User name={"Taro"} age={10} />
+      <User name={"Hanako"} age={5} /> */}
+    </div>
   )
 }
 
-const Cat = () => {
-  return <div>Meow</div>
+const User = (props) => {
+  return <div>hi, I am { props.name }, and { props.age } years old.</div>
+}
+
+// 情報が欠落している時のpropsの設定
+User.defaultProps = {
+  age: 1
 }
 
 export default App;
