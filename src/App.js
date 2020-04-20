@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // class component
 
@@ -24,11 +25,9 @@ const App = () => {
     <div>
       {
         profiles.map((profile, index) => {
-          return <User name={profile.name} age={profile.age} key={index} />
+          return <User name={profile.name} age={profile.age} key={index} />  // ユーザーのコンポーネントにpropsを渡す
         })
       }
-      {/* <User name={"Taro"} age={10} />
-      <User name={"Hanako"} age={5} /> */}
     </div>
   )
 }
@@ -38,8 +37,13 @@ const User = (props) => {
 }
 
 // 情報が欠落している時のpropsの設定
-User.defaultProps = {
-  age: 1
+// User.defaultProps = {
+//   age: 1
+// }
+
+User.propTypes = {          // 型チェック warn出る
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 export default App;
