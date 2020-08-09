@@ -14,7 +14,6 @@ import * as serviceWorker from './serviceWorker';
 const store = createStore(reducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Switch>
@@ -22,8 +21,7 @@ ReactDOM.render(
           <Route exact path="/" component={EventsIndex}></Route>
         </Switch>
       </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 
